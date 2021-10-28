@@ -10,7 +10,6 @@ class Contact():
         self.Set_Address(address)
         self.Set_PhoneNumber(phoneNumber)
         self.Set_Birthday(birthday) #dd/mm/yyyy
-        self.ShowDetails()
 
     def ShowDetails(self):
         """Displays all contact details"""
