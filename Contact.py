@@ -1,12 +1,17 @@
 
 class Contact:
 
+    __name = ""
+    __address = ""
+    __phoneNumber = ""
+    __birthday = ""
+
     def __init__(self, name, address, phoneNumber, birthday):
         """Contact class constructor"""
-        self.__name = name
-        self.__address = address
-        self.__phoneNumber = phoneNumber
-        self.__birthday = birthday #dd/mm/yyyy
+        __name = name
+        __address = address
+        __phoneNumber = phoneNumber
+        __birthday = birthday #dd/mm/yyyy
 
     def ShowDetails(self):
         """Displays all contact details"""
