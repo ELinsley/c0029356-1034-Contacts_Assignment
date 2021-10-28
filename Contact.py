@@ -1,42 +1,34 @@
 
-class Contact:
+class Contact():
 
-    __name = ""
-    __address = ""
-    __phoneNumber = ""
-    __birthday = ""
+    ##print("Contact class exists") ##Debug
 
     def __init__(self, name, address, phoneNumber, birthday):
         """Contact class constructor"""
-        __name = name
-        __address = address
-        __phoneNumber = phoneNumber
-        __birthday = birthday #dd/mm/yyyy
+        ##print("Contact class constructor has been called") ##Debug
+        self.Set_Name(name)
+        self.Set_Address(address)
+        self.Set_PhoneNumber(phoneNumber)
+        self.Set_Birthday(birthday) #dd/mm/yyyy
+        self.ShowDetails()
 
     def ShowDetails(self):
         """Displays all contact details"""
-        print(self.Get_Name())
-        print(self.Get_Address())
-        print(self.Get_PhoneNumber())
-        print(self.Get_Birthday())
+        print(self.Get_Name(), self.Get_Address(), self.Get_PhoneNumber(), self.Get_Birthday())
 
 
 ############### Getters ################
 
     def Get_Name(self):
-        print("Name goes here")
         return self.__name
 
     def Get_Address(self):
-        print("Address goes here")
         return self.__address
 
     def Get_PhoneNumber(self):
-        print("Phone number here")
         return self.__phoneNumber
 
     def Get_Birthday(self):
-        print("Birthday goes here")
         return self.__birthday
 
 
