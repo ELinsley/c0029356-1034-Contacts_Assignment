@@ -13,7 +13,7 @@ class Contact():
 
     def PrintDetails(self):
         """Displays all contact details"""
-        print(self.Get_Name(), self.Get_Address(), self.Get_PhoneNumber(), self.Get_Birthday())
+        print(self.Get_Name(), " | ", self.Get_Address(), " | ", self.Get_PhoneNumber(), " | ", self.Get_Birthday())
 
     def Get_Details(self):
         """Returns all contact details"""
