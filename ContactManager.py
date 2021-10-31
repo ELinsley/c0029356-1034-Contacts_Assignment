@@ -72,7 +72,7 @@ class ContactManager():
         print("")
         for i in range(len(self.contactList)-1):
             details = self.contactList[i].Get_Details()
-            print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3])
+            print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3][0:10])
 
     def editContact(self):
         """Brings up editContact UI and allows the user to edit a contact"""
