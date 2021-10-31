@@ -1,3 +1,4 @@
+import re
 
 class Contact():
 
@@ -43,7 +44,14 @@ class Contact():
         self.__address = address
 
     def Set_PhoneNumber(self, phoneNumber):
-        self.__phoneNumber = phoneNumber
+        validInput = False
+        while not validInput:
+            if re.fullmatch("[0-9]{10}",phoneNumber):
+                self.__phoneNumber = phoneNumber
+                validInput = True
+            else:
+                phoneNumber = input("Phone numbers must consist of exactly 10 numerical characters, please try again: ")
+
 
     def Set_Birthday(self, birthday):
         self.__birthday = birthday

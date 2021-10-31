@@ -134,7 +134,7 @@ class ContactManager():
                 print("'Change birthday' selected...")
                 validInput = True
                 print("")
-                editDetail = input("Enter new birthday here 'dd/mm/yyyy': ")
+                editDetail = input("Enter new birthday here: ")
                 self.contactList[editID].Set_Address(editDetail)
 
             elif editColumn == "Exit":
