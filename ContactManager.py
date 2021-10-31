@@ -49,6 +49,7 @@ class ContactManager():
             if userInput == "1":
                 print("'Display all contacts' selected...")
                 validInput = True
+                self.DisplayAllContacts()
             elif userInput == "2":
                 print("'Search for a contact' selected...")
                 validInput = True
@@ -67,6 +68,12 @@ class ContactManager():
 
         return userInput
 
+    def DisplayAllContacts(self):
+        print("")
+        for i in range(len(self.contactList)-1):
+            details = self.contactList[i].Get_Details()
+            print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3])
+
     def editContact(self):
         """Brings up editContact UI and allows the user to edit a contact"""
         validInput = False
@@ -78,7 +85,7 @@ class ContactManager():
         print("+---------------------+")
 
         while validInput == False: ###!!! Need to check if input is actually an integer at all !!!###
-            editID = input("Enter the ID here: ")
+            editID = int(input("Enter the ID here: "))
             if (editID > len(self.contactList)-1) or (editID < 0):
                 print("There is no contact with that ID...")
             else:
