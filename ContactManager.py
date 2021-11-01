@@ -4,11 +4,11 @@ import re
 class ContactManager():
 
     contactList = []
-    print("Contact Manager class exists") ##Debug
+    ##print("Contact Manager class exists") ##Debug
 
     def __init__(self):
         """ContactManager class constructor"""
-        print("ContactManager has been constructed") ##Debug
+        ##print("ContactManager has been constructed") ##Debug
 
         self.LoadInContacts()
 
@@ -95,28 +95,52 @@ class ContactManager():
         while validInput == False:
             userInput = input("Enter your selection here: ")
 
-            if userInput == "1":
+            if userInput == "1": ########## Name search
                 validInput = True
                 searchParam = input("What name would you like to search for?: ")
                 exists = False
-                for i in range(len(self.contactList)-1):
+                for i in range(len(self.contactList)):
                     if self.contactList[i].Get_Name() == searchParam:
                         self.contactList[i].PrintDetails()
                         exists = True
                 if exists == False:
                     print("No contacts were found with that name...")
 
-            elif userInput =="2":
+            elif userInput == "2": ########## Address search
                 validInput = True
                 searchParam = input("What address would you like to search for?: ")
-            elif userInput =="3":
+                exists = False
+                for i in range(len(self.contactList)):
+                    if self.contactList[i].Get_Address() == searchParam:
+                        self.contactList[i].PrintDetails()
+                        exists = True
+                if exists == False:
+                    print("No contacts were found with that address...")
+
+            elif userInput =="3": ########## Phone number search
                 validInput = True
                 print("Phone numbers are always 10 numerical characters, e.g. 7945625056")
                 searchParam = input("What phone number would you like to search for?: ")
-            elif userInput =="4":
+                exists = False
+                for i in range(len(self.contactList)):
+                    if self.contactList[i].Get_PhoneNumber() == searchParam:
+                        self.contactList[i].PrintDetails()
+                        exists = True
+                if exists == False:
+                    print("No contacts were found with that phone number...")
+
+            elif userInput =="4": ########## Birthday Search
                 validInput = True
                 print("Birthdays are always in the form of dd/mm/yyyy, e.g. 10/07/2002")
                 searchParam = input("What birthday would you like to search for?: ")
+                exists = False
+                for i in range(len(self.contactList)):
+                    if self.contactList[i].Get_Birthday()[0:10] == searchParam:
+                        self.contactList[i].PrintDetails()
+                        exists = True
+                if exists == False:
+                    print("No contacts were found with that birthday...")
+
             elif userInput == "Exit":
                 validInput = True
                 print("Exit has been selected...")
