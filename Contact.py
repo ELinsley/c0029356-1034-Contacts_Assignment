@@ -50,9 +50,9 @@ class Contact():
                 self.__phoneNumber = phoneNumber
                 validInput = True
             else:
-                print(phoneNumber)
+                print(phoneNumber) ##Debug
                 phoneNumber = input("Phone numbers must consist of exactly 10 numerical characters, please try again: ")
 
 
-    def Set_Birthday(self, birthday):
+    def Set_Birthday(self, birthday): ##Input needs to be sanitised
         self.__birthday = birthday

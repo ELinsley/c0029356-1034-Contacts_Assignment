@@ -1,4 +1,5 @@
 import Contact
+import re
 
 class ContactManager():
 
@@ -34,18 +35,19 @@ class ContactManager():
 
     def MainMenu(self):
         """Brings up the main menu UI, then calls other functions based on user"""
-        validInput=False
         print("+-------------------------+")
         print("| 1) Display all contacts |")
         print("| 2) Search for a contact |")
         print("| 3) Edit a contact       |")
         print("| 4) Delete a contact     |")
+        print("| 5) Save changes         |")
         print("| Enter 'Exit' to save    |")
         print("| and quit.               |")
         print("+-------------------------+")
         print("(1-4 / Exit)")
 
-        userInput = input("Enter your selection: ")
+        validInput = False
+        userInput = input("Enter your selection here: ")
         while validInput == False:
             if userInput == "1":
                 print("'Display all contacts' selected...")
@@ -65,19 +67,59 @@ class ContactManager():
                 print("'Exit' selected...")
                 validInput=True
             else:
-                print("That is not a valid input...")
+                print("That is not a valid input, please try again...")
 
-        return userInput
+        return userInput ##might not need
 
     def DisplayAllContacts(self):
+        """Displays all the details of all existing contacts"""
         print("")
         for i in range(len(self.contactList)-1):
             details = self.contactList[i].Get_Details()
             print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3][0:10])
 
+    def searchContacts(self):
+        """Allows the user to search for a contact by name, address, phone number or birthday"""
+        print("")
+        print("+-------------------------+")
+        print("| 1) Search Names         |")
+        print("| 2) Search Address's     |")
+        print("| 3) Search Phone Numbers |")
+        print("| 4) Search Birthdays     |")
+        print("| Enter 'Exit' to return  |")
+        print("| to menu.                |")
+        print("+-------------------------+")
+        print("(1-4 / Exit)")
+        validInput = False
+        while validInput == False:
+            userInput = input("Enter your selection here: ")
+
+            if userInput == "1":
+                searchParam = input("What name would you like to search for?: ")
+                exists = False
+                for i in range(len(self.contactList)-1):
+                    if self.contactList[i].Get_Name() == searchParam:
+                        self.contactList[i].printDetails()
+                        exists = True
+                if exists == False:
+                    print("No contacts were found with that name...")
+
+            elif userInput =="2":
+                searchParam = input("What address would you like to search for?: ")
+            elif userInput =="3":
+                print("Phone numbers are always 10 numerical characters, e.g. 7945625056")
+                searchParam = input("What phone number would you like to search for?: ")
+            elif userInput =="4":
+                print("Birthdays are always in the form of dd/mm/yyyy, e.g. 10/07/2002")
+                searchParam = input("What birthday would you like to search for?: ")
+            elif userInput == "Exit":
+                print("Exit has been selected...")
+            else:
+                print("That is not a valid input, please try again...")
+
+
     def editContact(self):
         """Brings up editContact UI and allows the user to edit a contact"""
-        validInput = False
         print("") ##Creates an empty line
         print("+---------------------+")
         print("| Enter the ID of the |")
@@ -85,35 +127,41 @@ class ContactManager():
         print("| like to edit.       |")
         print("+---------------------+")
 
-        while validInput == False: ###!!! Need to check if input is actually an integer at all !!!###
-            editID = int(input("Enter the ID here: "))
-            if (editID > len(self.contactList)-1) or (editID < 0):
-                print("There is no contact with that ID...")
-            else:
-                validInput = True
-
         validInput = False
+        while validInput == False:
+            editID = input("Enter the ID here: ")
+
+            if not (re.fullmatch("[0-9]+",editID)): ##Makes sure the input is made of only numericals
+                print("The ID may only contain numbers, please try again...")
+            else:
+                editID = int(editID)
+                if (editID < len(self.contactList)) and (
+                        editID >= 0):  ##Makes sure input is within the range of possible contacts
+                    validInput = True
+                else:
+                    print("There is no contact with that ID, please try again...")
+
         print("")
         print(self.contactList[editID].Get_Name() + " has been selected...")
         print("")
-        print("+--------------------------+")
-        print("| 1) Change Name           |")
-        print("| 2) Change Address        |")
-        print("| 3) Change Phone Number   |")
-        print("| 4) Change Birthday       |")
-        print("| Enter 'Exit' to return   |")
-        print("| to menu.                 |")
-        print("+--------------------------+")
+        print("+------------------------+")
+        print("| 1) Change Name         |")
+        print("| 2) Change Address      |")
+        print("| 3) Change Phone Number |")
+        print("| 4) Change Birthday     |")
+        print("| Enter 'Exit' to return |")
+        print("| to menu.               |")
+        print("+------------------------+")
         print("(1-4 / Exit)")
 
+        validInput = False
         editColumn = input("Enter your selection: ")
-
         while validInput == False:
             if editColumn == "1":
                 print("'Change name' selected...")
                 validInput = True
                 print("")
-                editDetail = input("Enter a the new name here: ")
+                editDetail = input("Enter a new name here: ")
                 self.contactList[editID].Set_Name(editDetail)
 
             elif editColumn == "2":
