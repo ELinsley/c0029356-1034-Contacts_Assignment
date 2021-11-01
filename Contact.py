@@ -50,6 +50,7 @@ class Contact():
                 self.__phoneNumber = phoneNumber
                 validInput = True
             else:
+                print(phoneNumber)
                 phoneNumber = input("Phone numbers must consist of exactly 10 numerical characters, please try again: ")
 
 
