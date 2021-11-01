@@ -16,7 +16,7 @@ if __name__ == "__main__":
         print("| 5) Save changes.         |")
         print("| Enter 'Exit' to save     |")
         print("| and quit.                |")
-        print("+-----------------------=--+")
+        print("+--------------------------+")
         print("(1-4 / Exit)")
         userInput = input("Enter your selection here: ")
         if userInput == "1":
