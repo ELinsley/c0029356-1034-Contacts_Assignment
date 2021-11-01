@@ -56,6 +56,7 @@ class ContactManager():
             elif userInput == "2":
                 print("'Search for a contact' selected...")
                 validInput = True
+                self.searchContacts()
             elif userInput == "3":
                 print("'Edit a contact' selected...")
                 validInput = True
@@ -95,24 +96,29 @@ class ContactManager():
             userInput = input("Enter your selection here: ")
 
             if userInput == "1":
+                validInput = True
                 searchParam = input("What name would you like to search for?: ")
                 exists = False
                 for i in range(len(self.contactList)-1):
                     if self.contactList[i].Get_Name() == searchParam:
-                        self.contactList[i].printDetails()
+                        self.contactList[i].PrintDetails()
                         exists = True
                 if exists == False:
                     print("No contacts were found with that name...")
 
             elif userInput =="2":
+                validInput = True
                 searchParam = input("What address would you like to search for?: ")
             elif userInput =="3":
+                validInput = True
                 print("Phone numbers are always 10 numerical characters, e.g. 7945625056")
                 searchParam = input("What phone number would you like to search for?: ")
             elif userInput =="4":
+                validInput = True
                 print("Birthdays are always in the form of dd/mm/yyyy, e.g. 10/07/2002")
                 searchParam = input("What birthday would you like to search for?: ")
             elif userInput == "Exit":
+                validInput = True
                 print("Exit has been selected...")
             else:
                 print("That is not a valid input, please try again...")
