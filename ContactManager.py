@@ -39,11 +39,12 @@ class ContactManager():
         for i in range(len(self.contactList)-1):
             details = self.contactList[i].Get_Details()
             print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3][0:10])
+        input("Press enter to continue...")
 
     def searchContacts(self):
         """Allows the user to search for a contact by name, address, phone number or birthday"""
         print("")
-        print("+-------------------------+")
+        print("+---------Search----------+")
         print("| 1) Search Names         |")
         print("| 2) Search Address's     |")
         print("| 3) Search Phone Numbers |")
@@ -107,12 +108,13 @@ class ContactManager():
                 print("Exit has been selected...")
             else:
                 print("That is not a valid input, please try again...")
+        input("Press enter to continue...")
 
 
     def editContact(self):
         """Brings up editContact UI and allows the user to edit a contact"""
         print("") ##Creates an empty line
-        print("+---------------------+")
+        print("+--------Edit---------+")
         print("| Enter the ID of the |")
         print("| contact you would   |")
         print("| like to edit.       |")
@@ -135,7 +137,7 @@ class ContactManager():
         print("")
         print(self.contactList[editID].Get_Name() + " has been selected...")
         print("")
-        print("+------------------------+")
+        print("+----------Edit----------+")
         print("| 1) Change Name         |")
         print("| 2) Change Address      |")
         print("| 3) Change Phone Number |")
@@ -174,12 +176,12 @@ class ContactManager():
                 validInput = True
                 print("")
                 editDetail = input("Enter new birthday here: ")
-                self.contactList[editID].Set_Address(editDetail)
+                self.contactList[editID].Set_Birthday(editDetail)
 
             elif editColumn == "Exit":
                 print("'Exit' selected...")
                 validInput = True
             else:
                 print("That is not a valid input...")
-
         self.contactList[editID].PrintDetails() ##Debug
+        input("Press enter to continue...")
