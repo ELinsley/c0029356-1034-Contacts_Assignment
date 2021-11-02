@@ -53,6 +53,10 @@ class Contact():
                 print(phoneNumber) ## Debug
                 phoneNumber = input("Phone numbers must consist of exactly 10 numerical characters, please try again")
 
-
     def Set_Birthday(self, birthday): ## Input needs to be sanitised
         self.__birthday = birthday
+
+
+
+    def __str__(self):
+        print("I am a Contact instance called" + self.Get_Name())

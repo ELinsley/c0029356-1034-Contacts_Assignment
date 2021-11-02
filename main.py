@@ -33,9 +33,12 @@ if __name__ == "__main__":
             contactManager.AddNewContact()
         elif userInput == "5":
             print("'Delete a contact' selected...")
+            contactManager.DeleteContact()
         elif userInput == "6":
             print("'Save changes' selected...")
+            contactManager.SaveContacts()
         elif userInput == "Exit":
             print("Saving and quitting...")
+            contactManager.SaveContacts()
         else:
             print("That is not a valid input, please try again...")

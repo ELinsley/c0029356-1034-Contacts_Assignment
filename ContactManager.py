@@ -21,14 +21,14 @@ class ContactManager():
         ##print(fullText)  ##Debug
         textFile.close()
 
-        for i in range(len(fullText)-1):
+        for i in range(len(fullText)):
 
             splitText = fullText[i].split("'")
 
             name = splitText[0]
             address = splitText[1]
             phoneNumber = splitText[2]
-            birthday = splitText[3]
+            birthday = splitText[3][0:10]
 
             self.contactList.append(Contact.Contact(name, address, phoneNumber, birthday))
             ##print(self.contactList[i].Get_Name()) ##Debug
@@ -38,7 +38,7 @@ class ContactManager():
         print("")
         for i in range(len(self.contactList)):
             details = self.contactList[i].Get_Details()
-            print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3][0:10])
+            print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3])
         input("Press enter to continue...")
 
     def SearchContacts(self):
@@ -109,7 +109,6 @@ class ContactManager():
             else:
                 print("That is not a valid input, please try again...")
         input("Press enter to continue...")
-
 
     def EditContact(self):
         """Brings up editContact UI and allows the user to edit a contact"""
@@ -208,3 +207,46 @@ class ContactManager():
         self.contactList[len(self.contactList)-1].PrintDetails() ##Debug
         print("Contact added...")
         input("Press enter to continue...")
+
+    def DeleteContact(self):
+        """Delete a contact"""
+        print("")  ##Creates an empty line
+        print("+-------Delete--------+")
+        print("| Enter the ID of the |")
+        print("| contact you would   |")
+        print("| like to delete.     |")
+        print("+---------------------+")
+
+        validInput = False
+        while validInput == False:
+            editID = input("Enter the ID here: ")
+
+            if not (re.fullmatch("[0-9]+", editID)):  ##Makes sure the input is made of only numericals
+                print("The ID may only contain numbers, please try again...")
+            else:
+                editID = int(editID)
+                if (editID < len(self.contactList)) and (editID >= 0):  ##Makes sure input is within the range of possible contacts
+                    validInput = True
+                else:
+                    print("There is no contact with that ID, please try again...")
+
+        deletedContact = self.contactList.pop(editID)
+        print(deletedContact.Get_Name() + " has been deleted...")
+        input("Press enter to continue...")
+
+    def SaveContacts(self):
+        textFile = open("contactbook.txt","w")
+        for i in range(len(self.contactList)):
+            if i == len(self.contactList):
+                textFile.write(self.contactList[i].Get_Name() + "'" +
+                                self.contactList[i].Get_Address() + "'" +
+                                self.contactList[i].Get_PhoneNumber() + "'" +
+                                self.contactList[i].Get_Birthday()
+                               )
+            else:
+                textFile.write(self.contactList[i].Get_Name() + "'" +
+                                self.contactList[i].Get_Address() + "'" +
+                                self.contactList[i].Get_PhoneNumber() + "'" +
+                                self.contactList[i].Get_Birthday() + "\n"
+                                )
+        textFile.close()
