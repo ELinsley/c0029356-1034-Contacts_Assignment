@@ -36,12 +36,12 @@ class ContactManager():
     def DisplayAllContacts(self):
         """Displays all the details of all existing contacts"""
         print("")
-        for i in range(len(self.contactList)-1):
+        for i in range(len(self.contactList)):
             details = self.contactList[i].Get_Details()
             print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3][0:10])
         input("Press enter to continue...")
 
-    def searchContacts(self):
+    def SearchContacts(self):
         """Allows the user to search for a contact by name, address, phone number or birthday"""
         print("")
         print("+---------Search----------+")
@@ -54,7 +54,7 @@ class ContactManager():
         print("+-------------------------+")
         print("(1-4 / Exit)")
         validInput = False
-        while validInput == False:
+        while validInput == False: ## For sanitising files
             userInput = input("Enter your selection here: ")
 
             if userInput == "1": ########## Name search
@@ -111,7 +111,7 @@ class ContactManager():
         input("Press enter to continue...")
 
 
-    def editContact(self):
+    def EditContact(self):
         """Brings up editContact UI and allows the user to edit a contact"""
         print("") ##Creates an empty line
         print("+--------Edit---------+")
@@ -149,7 +149,7 @@ class ContactManager():
 
         validInput = False
         editColumn = input("Enter your selection: ")
-        while validInput == False:
+        while validInput == False: ## For sanitising inputs
             if editColumn == "1":
                 print("'Change name' selected...")
                 validInput = True
@@ -184,4 +184,27 @@ class ContactManager():
             else:
                 print("That is not a valid input...")
         self.contactList[editID].PrintDetails() ##Debug
+        input("Press enter to continue...")
+
+    def AddNewContact(self):
+        """Allows the user to input the details of a new contact, which is then added as a contact"""
+        print()
+        name = input("Enter the contacts full name here: ")
+        address = input("Enter the contacts full address here: ")
+
+        validInput = False
+        while not validInput:
+            phoneNumber = input("Enter the contacts phone number here: ")
+            if re.fullmatch("[0-9]{10}", phoneNumber): ##Checks if input is exactly 10 numerical characters
+                self.__phoneNumber = phoneNumber
+                validInput = True
+            else:
+                print(phoneNumber)  ## Debug
+                print("Phone numbers must consist of exactly 10 numerical characters, please try again...")
+
+        birthday = input("Enter the contacts birthday here: ")
+
+        self.contactList.append(Contact.Contact(name, address, phoneNumber, birthday))
+        self.contactList[len(self.contactList)-1].PrintDetails() ##Debug
+        print("Contact added...")
         input("Press enter to continue...")
