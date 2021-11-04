@@ -51,12 +51,20 @@ class Contact():
                 validInput = True
             else:
                 print(phoneNumber) ## Debug
-                phoneNumber = input("Phone numbers must consist of exactly 10 numerical characters, please try again")
+                print("Phone numbers must consist of exactly 10 numerical characters, please try again.")
+                phoneNumber = input("Enter phone number here: ")
 
     def Set_Birthday(self, birthday): ## Input needs to be sanitised
-        self.__birthday = birthday
-
+        validInput = False
+        while not validInput:
+            if re.fullmatch("[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]", birthday):
+                self.__birthday = birthday
+                validInput = True
+            else:
+                print(birthday)  ## Debug
+                print("Birthdays must be of the form dd/mm/yyyy")
+                birthday = input("Enter birthday here: ")
 
 
     def __str__(self):
-        print("I am a Contact instance called" + self.Get_Name())
+        print("I am a Contact called: " + self.Get_Name())

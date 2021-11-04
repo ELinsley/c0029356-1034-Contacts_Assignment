@@ -1,8 +1,10 @@
 import ContactManager
+import TestFile
 
 if __name__ == "__main__":
     ##print("Main") ## Debug
     contactManager = ContactManager.ContactManager() ## This also loads all contacts
+
 
     userInput=""
     while userInput != "Exit":

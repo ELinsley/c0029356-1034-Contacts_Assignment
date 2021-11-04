@@ -15,3 +15,5 @@ the main menu, or 5 to save without quitting.
 
 Assumes nationality of phone numbers isnt needed, so all phone numbers are exactly 10
 characters long (so no 0 or +44, etc.)
+
+Assumes no ones name has an apostraphe in it.

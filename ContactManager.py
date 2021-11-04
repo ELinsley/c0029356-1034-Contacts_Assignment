@@ -41,7 +41,7 @@ class ContactManager():
             print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3])
         input("Press enter to continue...")
 
-    def SearchContacts(self):
+    def SearchContacts(self): ##Need to edit input for some searches
         """Allows the user to search for a contact by name, address, phone number or birthday"""
         print("")
         print("+---------Search----------+")
