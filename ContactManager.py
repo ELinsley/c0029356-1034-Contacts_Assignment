@@ -79,80 +79,17 @@ class ContactManager():
                 resultList.append(self.GetContactDetails(i))
         return resultList
 
-    def EditContact(self):
-        """Brings up editContact UI and allows the user to edit a contact"""
-        print("") ##Creates an empty line
-        print("+--------Edit---------+")
-        print("| Enter the ID of the |")
-        print("| contact you would   |")
-        print("| like to edit.       |")
-        print("+---------------------+")
+    def EditContactName(self, index, name):
+        self.contactList[index].Set_Name(name)
 
-        validInput = False
-        while validInput == False:
-            editID = input("Enter the ID here: ")
+    def EditContactAddress(self, index, address):
+        self.contactList[index].Set_Address(address)
 
-            if not (re.fullmatch("[0-9]+",editID)): ##Makes sure the input is made of only numericals
-                print("The ID may only contain numbers, please try again...")
-            else:
-                editID = int(editID)
-                if (editID < len(self.contactList)) and (
-                        editID >= 0):  ##Makes sure input is within the range of possible contacts
-                    validInput = True
-                else:
-                    print("There is no contact with that ID, please try again...")
+    def EditContactPhoneNumber(self, index, phoneNumber):
+        self.contactList[index].Set_PhoneNumber(phoneNumber)
 
-        print("")
-        print(self.contactList[editID].Get_Name() + " has been selected...")
-        print("")
-        print("+----------Edit----------+")
-        print("| 1) Change Name         |")
-        print("| 2) Change Address      |")
-        print("| 3) Change Phone Number |")
-        print("| 4) Change Birthday     |")
-        print("| Enter 'Exit' to return |")
-        print("| to menu.               |")
-        print("+------------------------+")
-        print("(1-4 / Exit)")
-
-        validInput = False
-        editColumn = input("Enter your selection: ")
-        while validInput == False: ## For sanitising inputs
-            if editColumn == "1":
-                print("'Change name' selected...")
-                validInput = True
-                print("")
-                editDetail = input("Enter a new name here: ")
-                self.contactList[editID].Set_Name(editDetail)
-
-            elif editColumn == "2":
-                print("'Change address' selected...")
-                validInput = True
-                print("")
-                editDetail = input("Enter new address here: ")
-                self.contactList[editID].Set_Address(editDetail)
-
-            elif editColumn == "3":
-                print("'Change phone number' selected...")
-                validInput = True
-                print("")
-                editDetail = input("Enter new phone number here: ")
-                self.contactList[editID].Set_PhoneNumber(editDetail)
-
-            elif editColumn == "4":
-                print("'Change birthday' selected...")
-                validInput = True
-                print("")
-                editDetail = input("Enter new birthday here: ")
-                self.contactList[editID].Set_Birthday(editDetail)
-
-            elif editColumn == "Exit":
-                print("'Exit' selected...")
-                validInput = True
-            else:
-                print("That is not a valid input...")
-        self.contactList[editID].PrintDetails() ##Debug
-        input("Press enter to continue...")
+    def EditContactBirthday(self, index, birthday):
+        self.contactList[index].Set_Birthday(birthday)
 
     def AddNewContact(self):
         """Allows the user to input the details of a new contact, which is then added as a contact"""

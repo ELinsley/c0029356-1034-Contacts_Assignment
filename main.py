@@ -1,5 +1,6 @@
 import ContactManager
 import TestFile
+import re #regular expressions
 
 def DisplayContactsUI():
     for i in range(len(contactManager.contactList)):
@@ -79,6 +80,80 @@ def SearchContactsUI():
             print("That is not a valid input, please try again...")
     input("Press enter to continue...")
 
+def EditContactUI():
+    print("")  ##Creates an empty line
+    print("+--------Edit---------+")
+    print("| Enter the ID of the |")
+    print("| contact you would   |")
+    print("| like to edit.       |")
+    print("+---------------------+")
+
+    validInput = False
+    while validInput == False:
+        editID = input("Enter the ID here: ")
+
+        if not (re.fullmatch("[0-9]+", editID)):  ##Makes sure the input is made of only numericals
+            print("The ID may only contain numbers, please try again...")
+        else:
+            editID = int(editID)
+            if (editID < len(contactManager.contactList)) and (
+                    editID >= 0):  ##Makes sure input is within the range of possible contacts
+                validInput = True
+            else:
+                print("There is no contact with that ID, please try again...")
+    print("")
+    print(contactManager.GetContactDetails(editID)[1] + " has been selected...")
+    print("")
+    print("+----------Edit----------+")
+    print("| 1) Change Name         |")
+    print("| 2) Change Address      |")
+    print("| 3) Change Phone Number |")
+    print("| 4) Change Birthday     |")
+    print("| Enter 'Exit' to return |")
+    print("| to menu.               |")
+    print("+------------------------+")
+    print("(1-4 / Exit)")
+
+    validInput = False
+    editColumn = input("Enter your selection: ")
+    while validInput == False:  ## For sanitising inputs
+        if editColumn == "1":
+            print("'Change name' selected...")
+            validInput = True
+            print("")
+            editDetail = input("Enter a new name here: ")
+            contactManager.EditContactName(editID, editDetail)
+
+        elif editColumn == "2":
+            print("'Change address' selected...")
+            validInput = True
+            print("")
+            editDetail = input("Enter new address here: ")
+            contactManager.EditContactAddress(editID, editDetail)
+
+        elif editColumn == "3":
+            print("'Change phone number' selected...")
+            validInput = True
+            print("")
+            editDetail = input("Enter new phone number here: ")
+            contactManager.EditContactPhoneNumber(editID, editDetail)
+
+        elif editColumn == "4":
+            print("'Change birthday' selected...")
+            validInput = True
+            print("")
+            editDetail = input("Enter new birthday here: ")
+            contactManager.EditContactBirthday(editID, editDetail)
+
+        elif editColumn == "Exit":
+            print("'Exit' selected...")
+            validInput = True
+        else:
+            print("That is not a valid input...")
+    input("Press enter to continue...")
+
+
+
 if __name__ == "__main__":
     ##print("Main") ## Debug
     contactManager = ContactManager.ContactManager() ## This also loads all contacts
@@ -106,7 +181,7 @@ if __name__ == "__main__":
             SearchContactsUI()
         elif userInput == "3":
             print("'Edit a contact' selected...")
-            contactManager.EditContact()
+            EditContactUI()
         elif userInput == "4":
             print("'Add a contact' selected...")
             contactManager.AddNewContact()
