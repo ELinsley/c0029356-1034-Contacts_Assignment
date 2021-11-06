@@ -33,13 +33,10 @@ class ContactManager():
             self.contactList.append(Contact.Contact(name, address, phoneNumber, birthday))
             ##print(self.contactList[i].Get_Name()) ##Debug
 
-    def DisplayAllContacts(self):
-        """Displays all the details of all existing contacts"""
-        print("")
-        for i in range(len(self.contactList)):
-            details = self.contactList[i].Get_Details()
-            print("ID: " + str(i) + ", Name: " + details[0] + ", Address: " + details[1] + ", Phone Number: " + details[2] + ", Birthday: " + details[3])
-        input("Press enter to continue...")
+    def GetContact(self, index):
+        """Returns all the details of the indexed contact"""
+        details = self.contactList[index].Get_Details()
+        return details
 
     def SearchContacts(self): ##Need to edit input for some searches
         """Allows the user to search for a contact by name, address, phone number or birthday"""

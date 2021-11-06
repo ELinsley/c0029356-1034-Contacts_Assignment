@@ -1,5 +1,10 @@
 import ContactManager
-import TestFile
+
+def DisplayContactsUI():
+    for i in range(len(contactManager.contactList)):
+        contactDetails = contactManager.GetContact(i)
+        print("ID: " + str(i) + ", Name: " + contactDetails[0] + ", Address: " + contactDetails[1] + ", Phone Number: " + contactDetails[2] + ", Birthday: " + contactDetails[3])
+    input("Press enter to continue...")
 
 if __name__ == "__main__":
     ##print("Main") ## Debug
@@ -23,7 +28,7 @@ if __name__ == "__main__":
         userInput = input("Enter your selection here: ")
         if userInput == "1":
             print("'Display all contacts' selected...")
-            contactManager.DisplayAllContacts()
+            DisplayContactsUI()
         elif userInput == "2":
             print("'Search for a contact' selected...")
             contactManager.SearchContacts()

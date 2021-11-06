@@ -1,5 +1,6 @@
-import main
 import Contact
 import ContactManager
 
-#def TestAll():
+def TestAuto():
+    print("test goes here")
+
