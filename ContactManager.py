@@ -33,79 +33,51 @@ class ContactManager():
             self.contactList.append(Contact.Contact(name, address, phoneNumber, birthday))
             ##print(self.contactList[i].Get_Name()) ##Debug
 
-    def GetContact(self, index):
+    def GetContactDetails(self, index):
         """Returns all the details of the indexed contact"""
         details = self.contactList[index].Get_Details()
-        return details
+        details.insert(0,index)
+        return  details
 
-    def SearchContacts(self): ##Need to edit input for some searches
-        """Allows the user to search for a contact by name, address, phone number or birthday"""
-        print("")
-        print("+---------Search----------+")
-        print("| 1) Search Names         |")
-        print("| 2) Search Address's     |")
-        print("| 3) Search Phone Numbers |")
-        print("| 4) Search Birthdays     |")
-        print("| Enter 'Exit' to return  |")
-        print("| to menu.                |")
-        print("+-------------------------+")
-        print("(1-4 / Exit)")
-        validInput = False
-        while validInput == False: ## For sanitising files
-            userInput = input("Enter your selection here: ")
+    def SearchContactName(self, name):
+        """Searches for a contact by name"""
+        exists = False
+        resultList = []
 
-            if userInput == "1": ########## Name search
-                validInput = True
-                searchParam = input("What name would you like to search for?: ")
-                exists = False
-                for i in range(len(self.contactList)):
-                    if self.contactList[i].Get_Name() == searchParam:
-                        self.contactList[i].PrintDetails()
-                        exists = True
-                if exists == False:
-                    print("No contacts were found with that name...")
+        for i in range(len(self.contactList)):
+            if self.contactList[i].Get_Name() == name:
+                resultList.append(self.GetContactDetails(i))
+        return resultList
 
-            elif userInput == "2": ########## Address search
-                validInput = True
-                searchParam = input("What address would you like to search for?: ")
-                exists = False
-                for i in range(len(self.contactList)):
-                    if self.contactList[i].Get_Address() == searchParam:
-                        self.contactList[i].PrintDetails()
-                        exists = True
-                if exists == False:
-                    print("No contacts were found with that address...")
+    def SearchContactAddress(self, address):
+        """Searches for a contact by address"""
+        exists = False
+        resultList = []
 
-            elif userInput =="3": ########## Phone number search
-                validInput = True
-                print("Phone numbers are always 10 numerical characters, e.g. 7945625056")
-                searchParam = input("What phone number would you like to search for?: ")
-                exists = False
-                for i in range(len(self.contactList)):
-                    if self.contactList[i].Get_PhoneNumber() == searchParam:
-                        self.contactList[i].PrintDetails()
-                        exists = True
-                if exists == False:
-                    print("No contacts were found with that phone number...")
+        for i in range(len(self.contactList)):
+            if self.contactList[i].Get_Address() == address:
+                resultList.append(self.GetContactDetails(i))
+        return resultList
 
-            elif userInput =="4": ########## Birthday Search
-                validInput = True
-                print("Birthdays are always in the form of dd/mm/yyyy, e.g. 10/07/2002")
-                searchParam = input("What birthday would you like to search for?: ")
-                exists = False
-                for i in range(len(self.contactList)):
-                    if self.contactList[i].Get_Birthday()[0:10] == searchParam:
-                        self.contactList[i].PrintDetails()
-                        exists = True
-                if exists == False:
-                    print("No contacts were found with that birthday...")
+    def SearchContactPhoneNumber(self, phoneNumber):
+        """Searches for a contact by phone number"""
+        exists = False
+        resultList = []
 
-            elif userInput == "Exit":
-                validInput = True
-                print("Exit has been selected...")
-            else:
-                print("That is not a valid input, please try again...")
-        input("Press enter to continue...")
+        for i in range(len(self.contactList)):
+            if self.contactList[i].Get_PhoneNumber() == phoneNumber:
+                resultList.append(self.GetContactDetails(i))
+        return resultList
+
+    def SearchContactBirthday(self, birthday):
+        """Searches for a contact by birthday"""
+        exists = False
+        resultList = []
+
+        for i in range(len(self.contactList)):
+            if self.contactList[i].Get_Birthday()[0:10] == birthday:
+                resultList.append(self.GetContactDetails(i))
+        return resultList
 
     def EditContact(self):
         """Brings up editContact UI and allows the user to edit a contact"""
