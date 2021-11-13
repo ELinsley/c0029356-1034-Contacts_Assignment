@@ -152,7 +152,52 @@ def EditContactUI():
             print("That is not a valid input...")
     input("Press enter to continue...")
 
+def AddNewContactUI():
+    print()
+    name = input("Enter the contacts full name here: ")
+    address = input("Enter the contacts full address here: ")
 
+    validInput = False
+    while not validInput:
+        phoneNumber = input("Enter the contacts phone number here: ")
+        if re.fullmatch("[0-9]{10}", phoneNumber):  ##Checks if input is exactly 10 numerical characters
+            validInput = True
+        else:
+            print(phoneNumber)  ## Debug
+            print("Phone numbers must consist of exactly 10 numerical characters, please try again...")
+
+    birthday = input("Enter the contacts birthday here: ")
+
+    contactManager.AddNewContact(name,address,phoneNumber,birthday)
+
+    input("Press enter to continue...")
+
+def DeleteContactUI():
+    print("")  ##Creates an empty line
+    print("+-------Delete--------+")
+    print("| Enter the ID of the |")
+    print("| contact you would   |")
+    print("| like to delete.     |")
+    print("+---------------------+")
+
+    validInput = False
+    while validInput == False:
+        editID = input("Enter the ID here: ")
+
+        if not (re.fullmatch("[0-9]+", editID)):  ##Makes sure the input is made of only numericals
+            print("The ID may only contain numbers, please try again...")
+        else:
+            editID = int(editID)
+            if (editID < len(contactManager.contactList)) and (
+                    editID >= 0):  ##Makes sure input is within the range of possible contacts
+                validInput = True
+            else:
+                print("There is no contact with that ID, please try again...")
+
+    deletedContact = contactManager.DeleteContact(editID)
+
+    print(deletedContact.Get_Name() + " has been deleted...")
+    input("Press enter to continue...")
 
 if __name__ == "__main__":
     ##print("Main") ## Debug
@@ -184,10 +229,10 @@ if __name__ == "__main__":
             EditContactUI()
         elif userInput == "4":
             print("'Add a contact' selected...")
-            contactManager.AddNewContact()
+            AddNewContactUI()
         elif userInput == "5":
             print("'Delete a contact' selected...")
-            contactManager.DeleteContact()
+            DeleteContactUI()
         elif userInput == "6":
             print("'Save changes' selected...")
             contactManager.SaveContacts()

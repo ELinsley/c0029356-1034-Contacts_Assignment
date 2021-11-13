@@ -13,7 +13,7 @@ class ContactManager():
         self.LoadInContacts()
 
     def LoadInContacts(self):
-        """Returns a list of contacts instantiated from a text file"""
+        """Fills a list of contacts instantiated from a text file"""
         ##print("LoadInContacts has been called") ##Debug
 
         textFile = open("contactbook.txt", "r")
@@ -30,7 +30,8 @@ class ContactManager():
             phoneNumber = splitText[2]
             birthday = splitText[3][0:10]
 
-            self.contactList.append(Contact.Contact(name, address, phoneNumber, birthday))
+            ##self.contactList.append(Contact.Contact(name, address, phoneNumber, birthday))
+            self.AddNewContact(name,address,phoneNumber,birthday)
             ##print(self.contactList[i].Get_Name()) ##Debug
 
     def GetContactDetails(self, index):
@@ -40,7 +41,7 @@ class ContactManager():
         return  details
 
     def SearchContactName(self, name):
-        """Searches for a contact by name"""
+        """Searches for a contact by name, returns the list of contacts with that address."""
         exists = False
         resultList = []
 
@@ -50,7 +51,7 @@ class ContactManager():
         return resultList
 
     def SearchContactAddress(self, address):
-        """Searches for a contact by address"""
+        """Searches for a contact by address, returns the list of contacts with that address."""
         exists = False
         resultList = []
 
@@ -60,7 +61,7 @@ class ContactManager():
         return resultList
 
     def SearchContactPhoneNumber(self, phoneNumber):
-        """Searches for a contact by phone number"""
+        """Searches for a contact by phone number, returns the list of contacts with that address."""
         exists = False
         resultList = []
 
@@ -70,7 +71,7 @@ class ContactManager():
         return resultList
 
     def SearchContactBirthday(self, birthday):
-        """Searches for a contact by birthday"""
+        """Searches for a contact by birthday, returns the list of contacts with that address."""
         exists = False
         resultList = []
 
@@ -80,67 +81,33 @@ class ContactManager():
         return resultList
 
     def EditContactName(self, index, name):
+        """Edits the indexed contact, replacing the previous value for their name."""
         self.contactList[index].Set_Name(name)
 
     def EditContactAddress(self, index, address):
+        """Edits the indexed contact, replacing the previous value for their address."""
         self.contactList[index].Set_Address(address)
 
     def EditContactPhoneNumber(self, index, phoneNumber):
+        """Edits the indexed contact, replacing the previous value for their birthday."""
         self.contactList[index].Set_PhoneNumber(phoneNumber)
 
     def EditContactBirthday(self, index, birthday):
+        """Edits the indexed contact, replacing the previous value for their birthday."""
         self.contactList[index].Set_Birthday(birthday)
 
-    def AddNewContact(self):
-        """Allows the user to input the details of a new contact, which is then added as a contact"""
-        print()
-        name = input("Enter the contacts full name here: ")
-        address = input("Enter the contacts full address here: ")
-
-        validInput = False
-        while not validInput:
-            phoneNumber = input("Enter the contacts phone number here: ")
-            if re.fullmatch("[0-9]{10}", phoneNumber): ##Checks if input is exactly 10 numerical characters
-                self.__phoneNumber = phoneNumber
-                validInput = True
-            else:
-                print(phoneNumber)  ## Debug
-                print("Phone numbers must consist of exactly 10 numerical characters, please try again...")
-
-        birthday = input("Enter the contacts birthday here: ")
-
-        self.contactList.append(Contact.Contact(name, address, phoneNumber, birthday))
-        self.contactList[len(self.contactList)-1].PrintDetails() ##Debug
+    def AddNewContact(self, name, address, phoneNumber, birthday):
+        """Adds a new contact with name, address, phoneNumber and birthday. Returns the new contact object."""
+        self.contactList.append(Contact.Contact(name,address,phoneNumber,birthday))
         print("Contact added...")
-        input("Press enter to continue...")
+        return self.contactList[len(self.contactList)-1]
 
-    def DeleteContact(self):
-        """Delete a contact"""
-        print("")  ##Creates an empty line
-        print("+-------Delete--------+")
-        print("| Enter the ID of the |")
-        print("| contact you would   |")
-        print("| like to delete.     |")
-        print("+---------------------+")
-
-        validInput = False
-        while validInput == False:
-            editID = input("Enter the ID here: ")
-
-            if not (re.fullmatch("[0-9]+", editID)):  ##Makes sure the input is made of only numericals
-                print("The ID may only contain numbers, please try again...")
-            else:
-                editID = int(editID)
-                if (editID < len(self.contactList)) and (editID >= 0):  ##Makes sure input is within the range of possible contacts
-                    validInput = True
-                else:
-                    print("There is no contact with that ID, please try again...")
-
-        deletedContact = self.contactList.pop(editID)
-        print(deletedContact.Get_Name() + " has been deleted...")
-        input("Press enter to continue...")
+    def DeleteContact(self, index):
+        """Deletes the indexed contact from the contact list and returns the contact object that was deleted."""
+        return self.contactList.pop(index)
 
     def SaveContacts(self):
+        """Saves all the details in contactList to the text file, overwriting the previous content."""
         textFile = open("contactbook.txt","w")
         for i in range(len(self.contactList)):
             if i == len(self.contactList):
