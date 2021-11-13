@@ -135,7 +135,7 @@ def EditContactUI():
             print("'Change phone number' selected...")
             validInput = True
             print("")
-            editDetail = input("Enter new phone number here: ")
+            editDetail = VerifyPhoneNumber(input("Enter new phone number here: "))
             contactManager.EditContactPhoneNumber(editID, editDetail)
 
         elif editColumn == "4":
@@ -156,16 +156,7 @@ def AddNewContactUI():
     print()
     name = input("Enter the contacts full name here: ")
     address = input("Enter the contacts full address here: ")
-
-    validInput = False
-    while not validInput:
-        phoneNumber = input("Enter the contacts phone number here: ")
-        if re.fullmatch("[0-9]{10}", phoneNumber):  ##Checks if input is exactly 10 numerical characters
-            validInput = True
-        else:
-            print(phoneNumber)  ## Debug
-            print("Phone numbers must consist of exactly 10 numerical characters, please try again...")
-
+    phoneNumber = VerifyPhoneNumber(input("Enter the contacts phone number here: "))
     birthday = input("Enter the contacts birthday here: ")
 
     contactManager.AddNewContact(name,address,phoneNumber,birthday)
@@ -198,6 +189,18 @@ def DeleteContactUI():
 
     print(deletedContact.Get_Name() + " has been deleted...")
     input("Press enter to continue...")
+
+def VerifyPhoneNumber(phoneNumber):
+    """Loops until a valid phone number is input, has no other break. Returns valid phone number."""
+    validInput = False
+    while not validInput:
+        if re.fullmatch("[0-9]{10}", phoneNumber):
+            validInput = True
+        else:
+            print(phoneNumber)  ## Debug
+            print("Phone numbers must consist of exactly 10 numerical characters, please try again.")
+            phoneNumber = input("Enter phone number here: ")
+    return phoneNumber
 
 if __name__ == "__main__":
     ##print("Main") ## Debug
