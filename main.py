@@ -202,6 +202,18 @@ def VerifyPhoneNumber(phoneNumber):
             phoneNumber = input("Enter phone number here: ")
     return phoneNumber
 
+def VerifyBirthday(birthday):
+    """Loops until a valid birthday is input by the user, returns that value, has no other break condition."""
+    validInput = False
+    while not validInput:
+        if re.fullmatch("[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]",birthday): # Checks to makes sure birthday is dd/mm/yyyy exactly
+            validInput=True
+        else:
+            print("Birthdays must be of the form dd/mm/yyyy, eg 29/03/1995, please try again...")
+            birthday = input("Enter birthday here: ")
+    return birthday
+
+
 if __name__ == "__main__":
     ##print("Main") ## Debug
     contactManager = ContactManager.ContactManager() ## This also loads all contacts
