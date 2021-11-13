@@ -21,3 +21,6 @@ e.g Joe'London'0192837465'01/02/3456
 
 Assumes users understand what is meant by dd/mm/yyyy as this is the only accepted
 format for birthday input.
+
+Assumes user won't lie about their details, as the program only validates the formats,
+it doesn't check if the inputs are actually true/valid.
