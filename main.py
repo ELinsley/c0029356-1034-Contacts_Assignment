@@ -1,8 +1,11 @@
 import ContactManager
 import TestFile
+
 import re #regular expressions
 
+
 def DisplayContactsUI():
+    print(contactManager.contactList)
     for i in range(len(contactManager.contactList)):
         contactDetails = contactManager.GetContactDetails(i)
         print("ID: " + str(contactDetails[0]) + ", Name: " + contactDetails[1] + ", Address: " + contactDetails[2] + ", Phone Number: " + contactDetails[3] + ", Birthday: " + contactDetails[4])
@@ -214,8 +217,7 @@ def VerifyBirthday(birthday):
     return birthday
 
 
-if __name__ == "__main__":
-    ##print("Main") ## Debug
+if __name__ == "__main__" and TestFile.TestAuto("Davidiom Testerino", "999 Testable Rd, Testsite 4, Manchester", "9999999999", "99/99/9999"):
     contactManager = ContactManager.ContactManager() ## This also loads all contacts
 
     userInput=""

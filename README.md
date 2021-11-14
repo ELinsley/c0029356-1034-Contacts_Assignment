@@ -24,3 +24,6 @@ format for birthday input.
 
 Assumes user won't lie about their details, as the program only validates the formats,
 it doesn't check if the inputs are actually true/valid.
+
+Assumes no one has the following details: David Tester : 35 Auto Tst, Teston, Testfordshire : 1234567890 : 01/02/3000
+as these are all used for the test contact.
