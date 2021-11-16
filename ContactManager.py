@@ -99,7 +99,7 @@ class ContactManager():
     def AddNewContact(self, name, address, phoneNumber, birthday):
         """Adds a new contact with name, address, phoneNumber and birthday. Returns the new contact object."""
         self.contactList.append(Contact.Contact(name,address,phoneNumber,birthday))
-        print("Contact added...")
+        #print("Contact added...") ##Debug
         return self.contactList[len(self.contactList)-1]
 
     def DeleteContact(self, index):
