@@ -3,9 +3,12 @@ How to Use
 
 ###Overview of the application
 
+This is a contact management application. A user can, add, edit, delete and
+display/search for contacts. Contacts are saved to a .txt file local to the
+code, details are seperated by ' and contacts are seperated by new lines.
 
-
-
+All program menus and interactions are in the commandline, entering numbers
+and text when prompted.
 
 -------------------------------------------
 
