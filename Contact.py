@@ -59,4 +59,4 @@ class Contact():
 
 
     def __str__(self):
-        print("I am a Contact called: " + self.Get_Name())
+        return "I am a Contact called: " + self.Get_Name()

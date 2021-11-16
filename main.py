@@ -257,4 +257,4 @@ if __name__ == "__main__" and TestFile.TestAuto("Davidiom Testerino", "999 Testa
             print("Saving and quitting...")
             contactManager.SaveContacts()
         else:
-            print("That is not a valid input, please try again...")
+            print("That is not a valid input, please try again...") ##Add exceptions

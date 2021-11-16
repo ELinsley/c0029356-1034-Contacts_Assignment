@@ -123,3 +123,7 @@ class ContactManager():
                                 self.contactList[i].Get_Birthday() + "\n"
                                 )
         textFile.close()
+
+
+    def __str__(self):
+        return "I am the contact manager class, I have: " + len(self.contactList)
