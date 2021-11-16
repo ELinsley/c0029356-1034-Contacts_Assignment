@@ -17,12 +17,12 @@ def TestAuto(name, address, phoneNumber, birthday):
     print("Adding test contact "+ testName +" : "+ testAddress +" : "+ testPhoneNumber + " : "+ testBirthday)
     testContactManager = ContactManager.ContactManager()
     testContactManager.AddNewContact(testName, testAddress, testPhoneNumber, testBirthday)
-    testID = len(testContactManager.contactList) - 1
-    if testContactManager.contactList[testID].Get_Name() == testName:
-        print("Last contact added is "+ testContactManager.contactList[testID].Get_Name())
+    testID = testContactManager.GetCListLength() - 1
+    if testContactManager.GetContact(testID).Get_Name() == testName:
+        print("Last contact added is "+ testContactManager.GetContact(testID).Get_Name())
         print("Test contact added succesfully...")
     else:
-        print("! Last contact added is named "+testContactManager.contactList[testID].Get_Name())
+        print("! Last contact added is named "+testContactManager.GetContact(testID).Get_Name())
         print("! Test contact was not added succesfully!..")
         testSuccess = False
 
@@ -87,49 +87,49 @@ def TestAuto(name, address, phoneNumber, birthday):
 
     editName = testName+"Test"
     testContactManager.EditContactName(testID, editName)
-    if testContactManager.contactList[testID].Get_Name() == editName:
-        print("Test contact name has been correctly edited to ("+editName+"), it is now (" +testContactManager.contactList[testID].Get_Name()+ ")...")
+    if testContactManager.GetContact(testID).Get_Name() == editName:
+        print("Test contact name has been correctly edited to ("+editName+"), it is now (" +testContactManager.GetContact(testID).Get_Name()+ ")...")
     else:
         print("! Test contact name has not been correctly edited!..")
-        print(testContactManager.contactList[testID].Get_Name())
+        print(testContactManager.GetContact(testID).Get_Name())
         testSuccess = False
 
     editAddress = testAddress+"Test"
     testContactManager.EditContactAddress(testID, editAddress)
-    if testContactManager.contactList[testID].Get_Address() == editAddress:
-        print("Test contact address has been correctly edited to ("+editAddress+"), it is now (" +testContactManager.contactList[testID].Get_Address()+ ")...")
+    if testContactManager.GetContact(testID).Get_Address() == editAddress:
+        print("Test contact address has been correctly edited to ("+editAddress+"), it is now (" +testContactManager.GetContact(testID).Get_Address()+ ")...")
     else:
         print("! Test contact address has not been correctly edited!..")
-        print(testContactManager.contactList[testID].Get_Address())
+        print(testContactManager.GetContact(testID).Get_Address())
         testSuccess = False
 
     editPhoneNumber = "0000000000"
     testContactManager.EditContactPhoneNumber(testID, editPhoneNumber)
-    if testContactManager.contactList[testID].Get_PhoneNumber() == editPhoneNumber:
-        print("Test contact phone number has been correctly edited to ("+editPhoneNumber+"), it is now (" +testContactManager.contactList[testID].Get_PhoneNumber()+ ")...")
+    if testContactManager.GetContact(testID).Get_PhoneNumber() == editPhoneNumber:
+        print("Test contact phone number has been correctly edited to ("+editPhoneNumber+"), it is now (" +testContactManager.GetContact(testID).Get_PhoneNumber()+ ")...")
     else:
         print("! Test contact phone number has not been correctly edited!..")
-        print(testContactManager.contactList[testID].Get_PhoneNumber())
+        print(testContactManager.GetContact(testID).Get_PhoneNumber())
         testSuccess = False
 
     editBirthday = "00/00/0000"
     testContactManager.EditContactBirthday(testID, editBirthday)
-    if testContactManager.contactList[testID].Get_Birthday() == editBirthday:
-        print("Test contact birthday has been correctly edited to " + editBirthday + ", it is now (" +testContactManager.contactList[testID].Get_Birthday()+ ")...")
+    if testContactManager.GetContact(testID).Get_Birthday() == editBirthday:
+        print("Test contact birthday has been correctly edited to " + editBirthday + ", it is now (" +testContactManager.GetContact(testID).Get_Birthday()+ ")...")
     else:
         print("! Test contact birthday has not been correctly edited!..")
-        print(testContactManager.contactList[testID].Get_Birthday())
+        print(testContactManager.GetContact(testID).Get_Birthday())
         testSuccess = False
 
     ############ Deleting a Contact ############
 
-    testContactManager.DeleteContact(len(testContactManager.contactList)-1)
-    if testContactManager.contactList[len(testContactManager.contactList)-1].Get_Name() != editName: ##Is the last contact the same as the edited test one?
-        print("Contact succesfully deleted, the contact at the end of the list is now " + testContactManager.contactList[len(testContactManager.contactList)-1].Get_Name())
+    testContactManager.DeleteContact(testContactManager.GetCListLength()-1)
+    if testContactManager.GetContact(testContactManager.GetCListLength()-1).Get_Name() != editName: ##Is the last contact the same as the edited test one?
+        print("Contact succesfully deleted, the contact at the end of the list is now " + testContactManager.GetContact(testContactManager.GetCListLength()-1).Get_Name())
     else:
         print("! Contact has not been deleted succesfully!..")
         testSuccess = False
 
-
-
+    print("End of test.")
+    print("")
     return testSuccess

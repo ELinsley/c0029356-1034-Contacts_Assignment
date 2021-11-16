@@ -1,17 +1,21 @@
+import sysconfig
+import sys
+
 import ContactManager
 import TestFile
 
-import re #regular expressions
+import re # Used for regular expressions
 
 
 def DisplayContactsUI():
-    print(contactManager.contactList)
-    for i in range(len(contactManager.contactList)):
+    """Loops through the list of contacts, printing all the details of each one"""
+    for i in range(contactManager.GetCListLength()):
         contactDetails = contactManager.GetContactDetails(i)
         print("ID: " + str(contactDetails[0]) + ", Name: " + contactDetails[1] + ", Address: " + contactDetails[2] + ", Phone Number: " + contactDetails[3] + ", Birthday: " + contactDetails[4])
     input("Press enter to continue...")
 
 def SearchContactsUI():
+    """CLI that allows the user to select a detail to search against, and input the detail to look for"""
     print("")
     print("+---------Search----------+")
     print("| 1) Search Names         |")
@@ -84,6 +88,7 @@ def SearchContactsUI():
     input("Press enter to continue...")
 
 def EditContactUI():
+    """CLI that allows the user to select a contact to edit by ID, select which detail to edit, and input the detail"""
     print("")  ##Creates an empty line
     print("+--------Edit---------+")
     print("| Enter the ID of the |")
@@ -99,7 +104,7 @@ def EditContactUI():
             print("The ID may only contain numbers, please try again...")
         else:
             editID = int(editID)
-            if (editID < len(contactManager.contactList)) and (
+            if (editID < contactManager.GetCListLength()) and (
                     editID >= 0):  ##Makes sure input is within the range of possible contacts
                 validInput = True
             else:
@@ -156,6 +161,7 @@ def EditContactUI():
     input("Press enter to continue...")
 
 def AddNewContactUI():
+    """CLI that allows the user to input details for a new contact"""
     print()
     name = input("Enter the contacts full name here: ")
     address = input("Enter the contacts full address here: ")
@@ -167,6 +173,7 @@ def AddNewContactUI():
     input("Press enter to continue...")
 
 def DeleteContactUI():
+    """CLI that allows the user to input an ID of the contact they want deleted"""
     print("")  ##Creates an empty line
     print("+-------Delete--------+")
     print("| Enter the ID of the |")
@@ -182,7 +189,7 @@ def DeleteContactUI():
             print("The ID may only contain numbers, please try again...")
         else:
             editID = int(editID)
-            if (editID < len(contactManager.contactList)) and (
+            if (editID < contactManager.GetCListLength()) and (
                     editID >= 0):  ##Makes sure input is within the range of possible contacts
                 validInput = True
             else:
@@ -216,11 +223,12 @@ def VerifyBirthday(birthday):
             birthday = input("Enter birthday here: ")
     return birthday
 
-
 if __name__ == "__main__" \
         and TestFile.TestAuto("Davidiom Testerino", "999 Testable Rd, Testsite 4, Manchester", "9999999999", "99/99/9999")\
         and TestFile.TestAuto("TESTTESTTESTTESTTESTTESTTESTTEST", "1010110101011010101010101100110", "0000990000", "00/99/0000"):
-    contactManager = ContactManager.ContactManager() ## This also loads all contacts
+    # ^^ Runs an auto test with a variety of different contact details, main doesnt run if they fail (or dont fail) ^^ #
+
+    contactManager = ContactManager.ContactManager() # Instantiating this immediately loads all contact details from the .txt
 
     userInput=""
     while userInput != "Exit":
