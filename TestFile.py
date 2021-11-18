@@ -172,3 +172,5 @@ if __name__ == "__main__":
         print("Tests all went as expected...")
     else:
         print("A test has failed at some point...")
+
+    input("Press enter to finish...")
