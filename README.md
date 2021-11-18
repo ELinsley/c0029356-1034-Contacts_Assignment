@@ -34,6 +34,9 @@ it doesn't check if the inputs are actually true/valid.
 * User wont quit the program before saving, as changes are only saved to text
 manually.
 
+* User knows the whitespace of what they are searching for, as the search does
+compare whitespaces.
+
 --------------------------------------------
 
 ###How to use
