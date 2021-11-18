@@ -31,6 +31,9 @@ format for birthday input.
 * Users won't lie about their details, as the program only validates the formats,
 it doesn't check if the inputs are actually true/valid.
 
+* User wont quit the program before saving, as changes are only saved to text
+manually.
+
 --------------------------------------------
 
 ###How to use

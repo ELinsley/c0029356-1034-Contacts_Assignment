@@ -32,25 +32,25 @@ class Contact():
 ############### Setters ################
 
     def Set_Name(self, name):
-        self.__name = str(name)
+        self.__name = self.remove_apostrophes(str(name))
 
     def Set_Address(self, address):
-        self.__address = address
+        self.__address = self.remove_apostrophes(str(address))
 
     def Set_PhoneNumber(self, phoneNumber):
-        self.__phoneNumber = phoneNumber
+        self.__phoneNumber = self.remove_apostrophes(str(phoneNumber))
 
     def Set_Birthday(self, birthday): ## Input needs to be sanitised
-        validInput = False
-        while not validInput:
-            if re.fullmatch("[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]", birthday):
-                self.__birthday = birthday
-                validInput = True
-            else:
-                print(birthday)  ## Debug
-                print("Birthdays must be of the form dd/mm/yyyy")
-                birthday = input("Enter birthday here: ")
+        self.__birthday = self.remove_apostrophes(birthday)
 
+
+
+    def remove_apostrophes(self, string):
+        """returns the input string but with all apostrophes removed"""
+        for i in range(len(string)):
+            if string[i] == "'":
+                string.pop(i)
+        return string
 
     def __str__(self):
         """Returns class details in one string"""
