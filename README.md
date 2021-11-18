@@ -53,3 +53,8 @@ their IDs. Press enter to return to main menu, then enter 3 to edit contacts. En
 the ID of the contact the user want to edit, e.g 3. Enter 1 to edit the name of the
 contact. Then enter the new name at the prompt, e.g Johnathon Jameson. Press enter
 to continue.
+
+
+#Testing
+In the terminal, enter 'python TestFile.py', this will run some hardcoded
+autotests with a few different inputs.

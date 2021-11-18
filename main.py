@@ -223,12 +223,9 @@ def VerifyBirthday(birthday):
             birthday = input("Enter birthday here: ")
     return birthday
 
-if __name__ == "__main__" \
-        and TestFile.TestAuto("Davidiom Testerino", "999 Testable Rd, Testsite 4, Manchester", "9999999999", "99/99/9999")\
-        and TestFile.TestAuto("TESTTESTTESTTESTTESTTESTTESTTEST", "1010110101011010101010101100110", "0000990000", "00/99/0000"):
-    # ^^ Runs an auto test with a variety of different contact details, main doesnt run if they fail (or dont fail) ^^ #
+if __name__ == "__main__":
 
-    contact_Manager = ContactManager.ContactManager() # Instantiating this immediately loads all contact details from the .txt
+    contact_Manager = ContactManager.ContactManager() # Instantiating this loads all contact details from the .txt
 
     user_input=""
     while user_input != "Exit":

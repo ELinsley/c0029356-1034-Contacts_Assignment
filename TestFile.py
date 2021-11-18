@@ -1,9 +1,7 @@
 import Contact
 import ContactManager
-import main
 
-
-def TestAuto(name, address, phoneNumber, birthday):
+def Test_Auto(name, address, phoneNumber, birthday):
     """Automatically tests all the ContactManager functions, using the input name, address, phoneNumber, birthday"""
     test_success = True
 
@@ -20,10 +18,10 @@ def TestAuto(name, address, phoneNumber, birthday):
     test_ID = test_contact_manager.Get_ContactList_Length() - 1
     if test_contact_manager.Get_Contact(test_ID).Get_Name() == test_name:
         print("Last contact added is "+ test_contact_manager.Get_Contact(test_ID).Get_Name())
-        print("Test contact added succesfully...")
+        print("Test contact added successfully...")
     else:
         print("! Last contact added is named "+test_contact_manager.Get_Contact(test_ID).Get_Name())
-        print("! Test contact was not added succesfully!..")
+        print("! Test contact was not added successfully!..")
         test_success = False
 
 ################ Search_Contact_Name ###################
@@ -33,7 +31,7 @@ def TestAuto(name, address, phoneNumber, birthday):
 
     if len(test_search) == 1:
         if test_search[0][1] == test_name:
-            print("Succesfully found the test contact when searching by name, it is: " + test_search[0][1] + "...")
+            print("successfully found the test contact when searching by name, it is: " + test_search[0][1] + "...")
         else:
             print("! Searching by name returned a contact, but not the test contact!..")
             test_success = False
@@ -47,7 +45,7 @@ def TestAuto(name, address, phoneNumber, birthday):
 
     if len(test_search) == 1:
         if test_search[0][2] == test_address:
-            print("Succesfully found the test contact when searching by address, it is: " + test_search[0][2] + "...")
+            print("successfully found the test contact when searching by address, it is: " + test_search[0][2] + "...")
         else:
             print("! Searching by address returned a contact, but not the test contact!..")
             test_success = False
@@ -61,7 +59,7 @@ def TestAuto(name, address, phoneNumber, birthday):
 
     if len(test_search) == 1:
         if test_search[0][3] == test_phonenumber:
-            print("Succesfully found the test contact when searching by phoneNumber, it is: " + test_search[0][3] + "...")
+            print("successfully found the test contact when searching by phoneNumber, it is: " + test_search[0][3] + "...")
         else:
             print("! Searching by phone number returned a contact, but not the test contact!..")
             test_success = False
@@ -75,7 +73,7 @@ def TestAuto(name, address, phoneNumber, birthday):
 
     if len(test_search) == 1:
         if test_search[0][4] == test_birthday:
-            print("Succesfully found the test contact when searching by birthday, it is: " + test_search[0][4] + "...")
+            print("successfully found the test contact when searching by birthday, it is: " + test_search[0][4] + "...")
         else:
             print("! Searching by birthday returned a contact, but not the test contact!..")
             test_success = False
@@ -125,9 +123,9 @@ def TestAuto(name, address, phoneNumber, birthday):
 
     test_contact_manager.Delete_Contact(test_contact_manager.Get_ContactList_Length()-1)
     if test_contact_manager.Get_Contact(test_contact_manager.Get_ContactList_Length()-1).Get_Name() != edit_name: ##Is the last contact the same as the edited test one?
-        print("Contact succesfully deleted, the contact at the end of the list is now " + test_contact_manager.Get_Contact(test_contact_manager.Get_ContactList_Length()-1).Get_Name())
+        print("Contact successfully deleted, the contact at the end of the list is now " + test_contact_manager.Get_Contact(test_contact_manager.Get_ContactList_Length()-1).Get_Name())
     else:
-        print("! Contact has not been deleted succesfully!..")
+        print("! Contact has not been deleted successfully!..")
         test_success = False
 
     print("End of test.")

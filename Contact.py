@@ -1,20 +1,14 @@
 import re
 
 class Contact():
-
-    ##print("Contact class exists") ##Debug
+    """Contact class that stores name, address, phonenumber and birthday. Getters and Setters exist for all details."""
 
     def __init__(self, name, address, phoneNumber, birthday):
-        """Contact class constructor"""
-        ##print("Contact class constructor has been called") ##Debug
+        """Contact class constructor. Takes name, address, phonenumber, birthday"""
         self.Set_Name(name)
         self.Set_Address(address)
         self.Set_PhoneNumber(phoneNumber)
         self.Set_Birthday(birthday) #dd/mm/yyyy
-
-    def Print_Details(self):
-        """Displays all contact details"""
-        print(self.Get_Name(), " | ", self.Get_Address(), " | ", self.Get_PhoneNumber(), " | ", self.Get_Birthday())
 
     def Get_Details(self):
         """Returns all contact details"""
@@ -38,7 +32,7 @@ class Contact():
 ############### Setters ################
 
     def Set_Name(self, name):
-        self.__name = name
+        self.__name = str(name)
 
     def Set_Address(self, address):
         self.__address = address
@@ -59,4 +53,5 @@ class Contact():
 
 
     def __str__(self):
-        return "I am a Contact called: " + self.Get_Name()
+        """Returns class details in one string"""
+        return("I am a contact class, here are my details: " + self.Get_Name(), " | ", self.Get_Address(), " | ", self.Get_PhoneNumber(), " | ", self.Get_Birthday())
