@@ -12,7 +12,7 @@ class Contact():
         self.Set_PhoneNumber(phoneNumber)
         self.Set_Birthday(birthday) #dd/mm/yyyy
 
-    def PrintDetails(self):
+    def Print_Details(self):
         """Displays all contact details"""
         print(self.Get_Name(), " | ", self.Get_Address(), " | ", self.Get_PhoneNumber(), " | ", self.Get_Birthday())
 

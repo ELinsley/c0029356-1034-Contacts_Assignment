@@ -7,14 +7,14 @@ import TestFile
 import re # Used for regular expressions
 
 
-def DisplayContactsUI():
+def Display_Contacts_UI():
     """Loops through the list of contacts, printing all the details of each one"""
-    for i in range(contactManager.GetCListLength()):
-        contactDetails = contactManager.GetContactDetails(i)
+    for i in range(contact_Manager.Get_ContactList_Length()):
+        contactDetails = contact_Manager.Get_Contact_Details(i)
         print("ID: " + str(contactDetails[0]) + ", Name: " + contactDetails[1] + ", Address: " + contactDetails[2] + ", Phone Number: " + contactDetails[3] + ", Birthday: " + contactDetails[4])
     input("Press enter to continue...")
 
-def SearchContactsUI():
+def Search_Contacts_UI():
     """CLI that allows the user to select a detail to search against, and input the detail to look for"""
     print("")
     print("+---------Search----------+")
@@ -26,15 +26,15 @@ def SearchContactsUI():
     print("| to menu.                |")
     print("+-------------------------+")
     print("(1-4 / Exit)")
-    validInput = False
-    while validInput == False:  ## For sanitising files
-        userInput = input("Enter your selection here: ")
+    valid_input = False
+    while valid_input == False:  ## For sanitising files
+        user_input = input("Enter your selection here: ")
 
-        if userInput == "1":  ########## Name search
-            validInput = True
-            searchParam = input("What name would you like to search for?: ")
+        if user_input == "1":  ########## Name search
+            valid_input = True
+            search_input = input("What name would you like to search for?: ")
 
-            results = contactManager.SearchContactName(searchParam)
+            results = contact_Manager.Search_Contact_Name(search_input)
             if len(results) == 0:
                 print("There are no contacts with that name...")
             else:
@@ -42,11 +42,11 @@ def SearchContactsUI():
                 for i in range(len(results)):
                     print("ID: " + str(results[i][0]) + ", Name: " + results[i][1] + ", Address: " + results[i][2] + ", Phone Number: " + results[i][3] + ", Birthday: " + results[i][4])
 
-        elif userInput == "2":  ########## Address search
-            validInput = True
-            searchParam = input("What address would you like to search for?: ")
+        elif user_input == "2":  ########## Address search
+            valid_input = True
+            search_input = input("What address would you like to search for?: ")
 
-            results = contactManager.SearchContactAddress(searchParam)
+            results = contact_Manager.Search_Contact_Address(search_input)
             if len(results) == 0:
                 print("There are no contacts with that address...")
             else:
@@ -54,11 +54,11 @@ def SearchContactsUI():
                 for i in range(len(results)):
                     print("ID: " + str(results[i][0]) + ", Name: " + results[i][1] + ", Address: " + results[i][2] + ", Phone Number: " + results[i][3] + ", Birthday: " + results[i][4])
 
-        elif userInput == "3":  ########## Phone number search
-            validInput = True
+        elif user_input == "3":  ########## Phone number search
+            valid_input = True
             print("Phone numbers are always 10 numerical characters, e.g. 7945625056")
-            searchParam = input("What phone number would you like to search for?: ")
-            results = contactManager.SearchContactPhoneNumber(searchParam)
+            search_input = input("What phone number would you like to search for?: ")
+            results = contact_Manager.Search_Contact_PhoneNumber(search_input)
 
             if len(results) == 0:
                 print("There are no contacts with that phone number...")
@@ -67,12 +67,12 @@ def SearchContactsUI():
                 for i in range(len(results)):
                     print("ID: " + str(results[i][0]) + ", Name: " + results[i][1] + ", Address: " + results[i][2] + ", Phone Number: " + results[i][3] + ", Birthday: " + results[i][4])
 
-        elif userInput == "4":  ########## Birthday Search
-            validInput = True
+        elif user_input == "4":  ########## Birthday Search
+            valid_input = True
             print("Birthdays are always in the form of dd/mm/yyyy, e.g. 10/07/2002")
-            searchParam = input("What birthday would you like to search for?: ") ##Sanitise
+            search_input = input("What birthday would you like to search for?: ") ##Sanitise
 
-            results = contactManager.SearchContactBirthday(searchParam)
+            results = contact_Manager.Search_Contact_Birthday(search_input)
             if len(results) == 0:
                 print("There are no contacts with that birthday...")
             else:
@@ -80,14 +80,14 @@ def SearchContactsUI():
                 for i in range(len(results)):
                     print("ID: " + str(results[i][0]) + ", Name: " + results[i][1] + ", Address: " + results[i][2] + ", Phone Number: " + results[i][3] + ", Birthday: " + results[i][4])
 
-        elif userInput == "Exit":
-            validInput = True
+        elif user_input == "Exit":
+            valid_input = True
             print("Exit has been selected...")
         else:
             print("That is not a valid input, please try again...")
     input("Press enter to continue...")
 
-def EditContactUI():
+def Edit_Contact_UI():
     """CLI that allows the user to select a contact to edit by ID, select which detail to edit, and input the detail"""
     print("")  ##Creates an empty line
     print("+--------Edit---------+")
@@ -96,21 +96,21 @@ def EditContactUI():
     print("| like to edit.       |")
     print("+---------------------+")
 
-    validInput = False
-    while validInput == False:
-        editID = input("Enter the ID here: ")
+    valid_input = False
+    while valid_input == False:
+        edit_ID = input("Enter the ID here: ")
 
-        if not (re.fullmatch("[0-9]+", editID)):  ##Makes sure the input is made of only numericals
+        if not (re.fullmatch("[0-9]+", edit_ID)):  ##Makes sure the input is made of only numericals
             print("The ID may only contain numbers, please try again...")
         else:
-            editID = int(editID)
-            if (editID < contactManager.GetCListLength()) and (
-                    editID >= 0):  ##Makes sure input is within the range of possible contacts
-                validInput = True
+            edit_ID = int(edit_ID)
+            if (edit_ID < contact_Manager.Get_ContactList_Length()) and (
+                    edit_ID >= 0):  ##Makes sure input is within the range of possible contacts
+                valid_input = True
             else:
                 print("There is no contact with that ID, please try again...")
     print("")
-    print(contactManager.GetContactDetails(editID)[1] + " has been selected...")
+    print(contact_Manager.Get_Contact_Details(edit_ID)[1] + " has been selected...")
     print("")
     print("+----------Edit----------+")
     print("| 1) Change Name         |")
@@ -122,45 +122,45 @@ def EditContactUI():
     print("+------------------------+")
     print("(1-4 / Exit)")
 
-    validInput = False
-    editColumn = input("Enter your selection: ")
-    while validInput == False:  ## For sanitising inputs
-        if editColumn == "1":
+    valid_input = False
+    selected_detail = input("Enter your selection: ")
+    while valid_input == False:  ## For sanitising inputs
+        if selected_detail == "1":
             print("'Change name' selected...")
-            validInput = True
+            valid_input = True
             print("")
-            editDetail = input("Enter a new name here: ")
-            contactManager.EditContactName(editID, editDetail)
+            new_detail = input("Enter a new name here: ")
+            contact_Manager.Edit_Contact_Name(edit_ID, new_detail)
 
-        elif editColumn == "2":
+        elif selected_detail == "2":
             print("'Change address' selected...")
-            validInput = True
+            valid_input = True
             print("")
-            editDetail = input("Enter new address here: ")
-            contactManager.EditContactAddress(editID, editDetail)
+            new_detail = input("Enter new address here: ")
+            contact_Manager.Edit_Contact_Address(edit_ID, new_detail)
 
-        elif editColumn == "3":
+        elif selected_detail == "3":
             print("'Change phone number' selected...")
-            validInput = True
+            valid_input = True
             print("")
-            editDetail = VerifyPhoneNumber(input("Enter new phone number here: "))
-            contactManager.EditContactPhoneNumber(editID, editDetail)
+            new_detail = VerifyPhoneNumber(input("Enter new phone number here: "))
+            contact_Manager.Edit_Contact_PhoneNumber(edit_ID, new_detail)
 
-        elif editColumn == "4":
+        elif selected_detail == "4":
             print("'Change birthday' selected...")
-            validInput = True
+            valid_input = True
             print("")
-            editDetail = input("Enter new birthday here: ")
-            contactManager.EditContactBirthday(editID, editDetail)
+            new_detail = input("Enter new birthday here: ")
+            contact_Manager.Edit_Contact_Birthday(edit_ID, new_detail)
 
-        elif editColumn == "Exit":
+        elif selected_detail == "Exit":
             print("'Exit' selected...")
-            validInput = True
+            valid_input = True
         else:
             print("That is not a valid input...")
     input("Press enter to continue...")
 
-def AddNewContactUI():
+def Add_New_Contact_UI():
     """CLI that allows the user to input details for a new contact"""
     print()
     name = input("Enter the contacts full name here: ")
@@ -168,11 +168,11 @@ def AddNewContactUI():
     phoneNumber = VerifyPhoneNumber(input("Enter the contacts phone number here: "))
     birthday = input("Enter the contacts birthday here: ")
 
-    contactManager.AddNewContact(name,address,phoneNumber,birthday)
+    contact_Manager.Add_New_Contact(name,address,phoneNumber,birthday)
 
     input("Press enter to continue...")
 
-def DeleteContactUI():
+def Delete_Contact_UI():
     """CLI that allows the user to input an ID of the contact they want deleted"""
     print("")  ##Creates an empty line
     print("+-------Delete--------+")
@@ -181,31 +181,31 @@ def DeleteContactUI():
     print("| like to delete.     |")
     print("+---------------------+")
 
-    validInput = False
-    while validInput == False:
-        editID = input("Enter the ID here: ")
+    valid_input = False
+    while valid_input == False:
+        edit_ID = input("Enter the ID here: ")
 
-        if not (re.fullmatch("[0-9]+", editID)):  ##Makes sure the input is made of only numericals
+        if not (re.fullmatch("[0-9]+", edit_ID)):  ##Makes sure the input is made of only numericals
             print("The ID may only contain numbers, please try again...")
         else:
-            editID = int(editID)
-            if (editID < contactManager.GetCListLength()) and (
-                    editID >= 0):  ##Makes sure input is within the range of possible contacts
-                validInput = True
+            edit_ID = int(edit_ID)
+            if (edit_ID < contact_Manager.Get_ContactList_Length()) and (
+                    edit_ID >= 0):  ##Makes sure input is within the range of possible contacts
+                valid_input = True
             else:
                 print("There is no contact with that ID, please try again...")
 
-    deletedContact = contactManager.DeleteContact(editID)
+    deleted_contact = contact_Manager.Delete_Contact(edit_ID)
 
-    print(deletedContact.Get_Name() + " has been deleted...")
+    print(deleted_contact.Get_Name() + " has been deleted...")
     input("Press enter to continue...")
 
 def VerifyPhoneNumber(phoneNumber):
     """Loops until a phone number of valid format is input by the user, has no other break. Returns valid phone number."""
-    validInput = False
-    while not validInput:
+    valid_input = False
+    while not valid_input:
         if re.fullmatch("[0-9]{10}", phoneNumber):
-            validInput = True
+            valid_input = True
         else:
             print(phoneNumber)  ## Debug
             print("Phone numbers must consist of exactly 10 numerical characters, please try again.")
@@ -214,10 +214,10 @@ def VerifyPhoneNumber(phoneNumber):
 
 def VerifyBirthday(birthday):
     """Loops until birthday of valid format is input by the user, returns that value, has no other break condition."""
-    validInput = False
-    while not validInput:
+    valid_input = False
+    while not valid_input:
         if re.fullmatch("[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]",birthday): # Checks to makes sure birthday is dd/mm/yyyy exactly
-            validInput=True;
+            valid_input=True;
         else:
             print("Birthdays must be of the form dd/mm/yyyy, eg 29/03/1995, please try again...")
             birthday = input("Enter birthday here: ")
@@ -228,10 +228,10 @@ if __name__ == "__main__" \
         and TestFile.TestAuto("TESTTESTTESTTESTTESTTESTTESTTEST", "1010110101011010101010101100110", "0000990000", "00/99/0000"):
     # ^^ Runs an auto test with a variety of different contact details, main doesnt run if they fail (or dont fail) ^^ #
 
-    contactManager = ContactManager.ContactManager() # Instantiating this immediately loads all contact details from the .txt
+    contact_Manager = ContactManager.ContactManager() # Instantiating this immediately loads all contact details from the .txt
 
-    userInput=""
-    while userInput != "Exit":
+    user_input=""
+    while user_input != "Exit":
         print("")
         print("+---------Contacts---------+")
         print("| 1) Display all contacts. |")
@@ -244,27 +244,27 @@ if __name__ == "__main__" \
         print("| and quit.                |")
         print("+--------------------------+")
         print("(1-4 / Exit)")
-        userInput = input("Enter your selection here: ")
-        if userInput == "1":
+        user_input = input("Enter your selection here: ")
+        if user_input == "1":
             print("'Display all contacts' selected...")
-            DisplayContactsUI()
-        elif userInput == "2":
+            Display_Contacts_UI()
+        elif user_input == "2":
             print("'Search for a contact' selected...")
-            SearchContactsUI()
-        elif userInput == "3":
+            Search_Contacts_UI()
+        elif user_input == "3":
             print("'Edit a contact' selected...")
-            EditContactUI()
-        elif userInput == "4":
+            Edit_Contact_UI()
+        elif user_input == "4":
             print("'Add a contact' selected...")
-            AddNewContactUI()
-        elif userInput == "5":
+            Add_New_Contact_UI()
+        elif user_input == "5":
             print("'Delete a contact' selected...")
-            DeleteContactUI()
-        elif userInput == "6":
+            Delete_Contact_UI()
+        elif user_input == "6":
             print("'Save changes' selected...")
-            contactManager.SaveContacts()
-        elif userInput == "Exit":
+            contact_Manager.Save_Contacts()
+        elif user_input == "Exit":
             print("Saving and quitting...")
-            contactManager.SaveContacts()
+            contact_Manager.Save_Contacts()
         else:
             print("That is not a valid input, please try again...") ##Add exceptions
