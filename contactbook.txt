@@ -110,7 +110,7 @@ Mickie Hinemoor'1135 Independence Center'8188669749'02/11/1981
 Ambrosi Banisch'9237 Cardinal Circle'6554907161'31/08/1960
 Cyrill Hutcheson'9 Kedzie Plaza'9765618552'20/12/1908
 Mickie Aldgate'9317 Calypso Way'1104285054'29/02/2000
-"Lenci O' Ronan"'781 Derek Road'3154927885'29/04/1934
+"Lenci O' Ronan"'781 Derek Road'3154927885
 Whitby Klulisek'910 Artisan Drive'8962347171'13/02/1963
 Staford Horsted'54 Dryden Hill'7556006049'08/09/2021
 Bettye Djurdjevic'716 Saint Paul Pass'8764666833'28/03/1916
@@ -144,7 +144,7 @@ Parrnell Jukes'408 Fallview Drive'8899585502'17/08/1997
 Raynell Del Castello'13 American Alley'3758727369'18/02/1948
 Lief Westby'77 Coolidge Parkway'1172483195'30/06/1997
 Gwenore Halling'2383 Muir Park'7599300515'30/07/1904
-"Pippy O'Cridigan"'59368 Nancy Drive'5886023116'05/08/1919
+"Pippy O'Cridigan"'59368 Nancy Drive'5886023116
 Gusty Farrear'91660 Center Road'6991962831'15/03/1901
 Trevor Walkden'144 Burning Wood Court'1376836944'16/03/2002
 Datha Pedgrift'947 Chive Terrace'3094832822'04/04/1999
@@ -184,7 +184,7 @@ Dara Gatty'04732 Knutson Park'5449644774'22/10/1961
 Cindee Shildrake'5 Vera Place'3834022078'23/12/1953
 Hamnet MacAirt'0332 Nevada Way'3555611275'28/03/2016
 Bernadine Stares'045 Arrowood Point'5603898246'03/03/1957
-"Sheffy O'Kennedy"'49 Loeprich Alley'2111812412'21/11/2005
+"Sheffy O'Kennedy"'49 Loeprich Alley'2111812412
 Sauveur Guiett'47 Mayfield Alley'9624065463'21/10/1923
 Chev Walkey'3 American Drive'3278127043'14/02/1920
 Reggi Pervoe'62 American Ash Alley'8393464079'06/03/1983
@@ -197,7 +197,7 @@ Cher Cutts'2658 Elmside Circle'8249869891'06/10/1909
 Iggie Longridge'50 Lighthouse Bay Drive'2841291077'23/04/2001
 Chery Tremathack'21717 Dexter Road'9807596710'27/01/1900
 Trisha Franzman'0 Sycamore Street'8554781188'19/01/1999
-"Darla O'Dunneen"'04 Gulseth Point'9332587438'21/08/1905
+"Darla O'Dunneen"'04 Gulseth Point'9332587438
 Sid De Bernardi'07293 Morning Crossing'4146841872'19/11/1998
 Cloe Fancutt'5 Linden Park'1194255291'11/01/2014
 Hastie Corinton'05 Arkansas Park'4996904210'20/01/1912
@@ -788,7 +788,7 @@ Kinna Clynter'8 Northview Street'1293951800'24/07/1956
 Terrijo Siward'10 Bobwhite Place'3343436868'22/02/1902
 Cindi Haestier'1 Duke Plaza'6847999088'22/12/1934
 Waly Ellison'90872 Oneill Hill'5586614733'06/04/2004
-"Dorolisa O'Garmen"'0762 Declaration Court'1119406314'30/08/2010
+"Dorolisa O'Garmen"'0762 Declaration Court'1119406314
 Byrom Whiteford'056 Crowley Alley'1612785442'19/05/1992
 Lilla Raggitt'7946 Atwood Alley'3844932951'31/05/2009
 Daisey Attyeo'32 Dexter Point'4983375996'21/08/1933
@@ -824,7 +824,7 @@ Katusha Willavoys'9273 2nd Court'7958792495'23/09/1928
 Imogen Fielding'91624 International Hill'1034712215'24/11/1971
 Winslow Tiler'7 Sunbrook Point'4368174246'08/11/1924
 Lauralee Leindecker'09336 Commercial Lane'4462534430'23/12/1953
-"Rosemonde O'Monahan"'96 Golden Leaf Circle'1715106840'18/06/2019
+"Rosemonde O'Monahan"'96 Golden Leaf Circle'1715106840
 Jaquelyn Scay'107 Talmadge Center'6099191145'18/10/1939
 Ulrike Albany'0726 Dottie Point'3613104236'27/03/1970
 Charlene Silberschatz'63133 Red Cloud Terrace'5428831471'10/02/1981
@@ -839,7 +839,7 @@ Adriano Kiffin'956 Claremont Hill'9966235225'16/06/1909
 Suzi Murden'80 Hudson Pass'2679156631'24/06/1964
 Jacinda Broadstock'81 Southridge Drive'9573656076'19/09/1970
 Verna Vasse'162 International Crossing'1311972579'18/06/1927
-"Pavla O'Hartnedy"'715 Dryden Avenue'6151388941'27/03/1949
+"Pavla O'Hartnedy"'715 Dryden Avenue'6151388941
 Jeremie Gooderham'1 Fairview Pass'7511742745'23/11/1961
 Rickey Veljes'1524 Pankratz Road'5284931579'31/12/1968
 Yul Leggen'8802 Dovetail Hill'4032622618'24/03/1934
@@ -989,7 +989,6 @@ Ernie Wakely'2472 Dahle Road'3683123090'25/12/1984
 Chip Yoselevitch'6747 Vera Court'7421114623'04/01/1966
 Aubine Dowall'50 Farmco Hill'4981865657'29/09/1914
 Stacee Mc Harg'7 Northport Road'6843990850'15/06/1952
-Sasha Lapping'23056 Roxbury Avenue'4399735685'14/01/1914
 Sheelah Stack'4137 4th Terrace'8839476903'05/12/1907
 Leanora Konig'8109 Forest Alley'9456963891'25/05/1962
 Lyndsie Airdrie'0 Toban Pass'9532545981'19/12/1969

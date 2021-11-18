@@ -38,7 +38,7 @@ class ContactManager():
         result_list = []
 
         for i in range(self.Get_ContactList_Length()):
-            if self.__contactList[i].Get_Name() == name:
+            if self.__contactList[i].Get_Name().lower() == name.lower():
                 result_list.append(self.Get_Contact_Details(i))
         return result_list
 
@@ -48,7 +48,7 @@ class ContactManager():
         result_list = []
 
         for i in range(self.Get_ContactList_Length()):
-            if self.__contactList[i].Get_Address() == address:
+            if self.__contactList[i].Get_Address().lower() == address.lower():
                 result_list.append(self.Get_Contact_Details(i))
         return result_list
 
