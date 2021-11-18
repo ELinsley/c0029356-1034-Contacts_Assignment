@@ -150,7 +150,7 @@ def Edit_Contact_UI():
             print("'Change birthday' selected...")
             valid_input = True
             print("")
-            new_detail = input("Enter new birthday here: ")
+            new_detail = VerifyBirthday(input("Enter new birthday here: "))
             contact_Manager.Edit_Contact_Birthday(edit_ID, new_detail)
 
         elif selected_detail == "Exit":
@@ -166,7 +166,7 @@ def Add_New_Contact_UI():
     name = input("Enter the contacts full name here: ")
     address = input("Enter the contacts full address here: ")
     phoneNumber = VerifyPhoneNumber(input("Enter the contacts phone number here: "))
-    birthday = input("Enter the contacts birthday here: ")
+    birthday = VerifyBirthday(input("Enter the contacts birthday here: "))
 
     contact_Manager.Add_New_Contact(name,address,phoneNumber,birthday)
 
