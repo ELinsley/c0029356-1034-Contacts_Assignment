@@ -101,7 +101,7 @@ def Test_Auto(name, address, phoneNumber, birthday):
         print(test_contact_manager.Get_Contact(test_ID).Get_Address())
         test_success = False
 
-    edit_phonenumber = "0000000000"
+    edit_phonenumber = "0102030405"
     test_contact_manager.Edit_Contact_PhoneNumber(test_ID, edit_phonenumber)
     if test_contact_manager.Get_Contact(test_ID).Get_PhoneNumber() == edit_phonenumber:
         print("Test contact phone number has been correctly edited to ("+edit_phonenumber+"), it is now (" +test_contact_manager.Get_Contact(test_ID).Get_PhoneNumber()+ ")...")
@@ -110,7 +110,7 @@ def Test_Auto(name, address, phoneNumber, birthday):
         print(test_contact_manager.Get_Contact(test_ID).Get_PhoneNumber())
         test_success = False
 
-    edit_birthday = "00/00/0000"
+    edit_birthday = "01/02/0304"
     test_contact_manager.Edit_Contact_Birthday(test_ID, edit_birthday)
     if test_contact_manager.Get_Contact(test_ID).Get_Birthday() == edit_birthday:
         print("Test contact birthday has been correctly edited to " + edit_birthday + ", it is now (" +test_contact_manager.Get_Contact(test_ID).Get_Birthday()+ ")...")
@@ -131,3 +131,44 @@ def Test_Auto(name, address, phoneNumber, birthday):
     print("End of test.")
     print("")
     return test_success
+
+
+if __name__ == "__main__":
+    test_success = True
+
+    try:
+        print("This test should pass...")
+        if not Test_Auto("David Tester", "4 Test Rd, Teston", "0192837465", "01/23/1986"): # Normal
+            test_success = False
+    except:
+        print("An error was encountered during the normal test...")
+        test_success = False
+
+    try:
+        print("This test should pass...")
+        if not Test_Auto("MY NAME IS NUMBERS ¬¬¬¬ 9999999999999999999", "999999999999999999999999999999999999rfrv99gr99999999999999999", "9999999999", "99/99/9999"): # Upper bound
+            test_success = False
+    except:
+        print("An error was encountered during the upper test...")
+        test_success = False
+
+    try:
+        print("This test should pass...")
+        if not Test_Auto("", "", "0000000000", "00/00/0000"): # Lower bound
+            test_success = False
+    except:
+        print("An error was encountered during the lower test...")
+        test_success = False
+
+    try:
+        print("This test should fail...")
+        if Test_Auto("'-1'", "-'2", "phone", "secret"): # Outer bound
+            test_success = False
+    except:
+        print("An error was encountered during the outer test...")
+        #test_success = False
+
+    if test_success:
+        print("Tests all went as expected...")
+    else:
+        print("A test has failed at some point...")

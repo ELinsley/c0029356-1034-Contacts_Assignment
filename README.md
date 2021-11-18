@@ -4,7 +4,7 @@ Contact Manager Application
 ###Overview of the application
 
 A user can, add, edit, delete and  display/search for contacts. Contacts
-are saved to a .txt file local to the  code, details are seperated by ' and 
+are saved to a .txt file local to the code, details are seperated by ' and 
 contacts are seperated by new lines.
 
 All program menus and interactions are in the commandline, entering numbers
@@ -60,4 +60,5 @@ to continue.
 
 #Testing
 In the terminal, enter 'python TestFile.py', this will run some hardcoded
-autotests with a few different inputs.
+autotests with a few different inputs. It does not test the ability of the
+code to save to a file.
